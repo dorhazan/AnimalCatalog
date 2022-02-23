@@ -1,0 +1,53 @@
+﻿@model MidProj.Models.Animal
+
+@{
+    ViewBag.Title = "Edit";
+
+    Layout = "_Layout";
+}
+
+<div class="center">
+    <form asp-action="EditedAnimal" asp-controller="Admin" asp-route-animalid="@Model.AnimalId" method="post" enctype="multipart/form-data">
+        <table class="table-fill">
+            
+            <thead><img src="~/Images/@Model.PictureName"></thead>
+            <p></p>
+            <tbody class="table-hover">
+               
+                
+                <tr>
+                    <td class="text-left">Name</td>
+                    <td><input asp-for="Name" type="text"  /></td>
+                </tr>
+                <tr>
+                    <td class="text-left">Age</td>
+                    <td>
+                        <input asp-for="Age" type="number" min="1" max="100"  />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left">Picture</td>
+                    <td>
+                        <label>Select image:</label>
+                        <input type="file" name="file" accept="Image/*" >
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left">Category</td>
+                    <td>
+                        <select asp-for="CatagoryId" asp-items="@ViewBag.catagories">
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="text-left">Description</td>
+                    <td><textarea style="min-width: 300px;  display: block; min-height: 50px; box-sizing: border-box; " asp-for="Description" type="text"></textarea></td>
+                </tr>
+        </table>
+        <p></p>
+    <button type="submit" class="text-center button-40">SaveChanges</button>
+    </form>
+
+
+</div>

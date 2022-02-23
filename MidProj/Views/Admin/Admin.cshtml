@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MidProj.Models.Catagory>
+    @{
+    ViewBag.Title = "Admin";
+    Layout = "_Layout";
+}
+<div class="center">
+    <h1 class="headline">Choose A Category :</h1>
+    <select id="selectedcategoryonadminview" onchange="selectedCategoryOnAdminView()">
+        @foreach (var category in Model)
+        {
+
+            @if (category.CatagoryId == ViewBag.id)
+            {
+                <option value="@category.CatagoryId" selected>@category.Name</option>
+            }
+            else
+            {
+                <option value="@category.CatagoryId">@category.Name</option>
+            }
+        }
+    </select>
+</div>
+
+<table class="table-fill" style="min-width: 870px; max-width: 870px;">
+    <thead>
+        <tr>
+            <th class="text-left">Portrait</th>
+            <th class="text-left">Name</th>
+            <th class="text-left">Find Out more and Comment!</th>
+            <th class="text-left"><a asp-action="CreateAnimal" asp-controller="Admin"><button class="button-40">Add New</button></a></th>
+        </tr>
+    </thead>
+    <tbody class="table-hover">
+
+        @foreach (var animal in ViewBag.Animals)
+        {
+            <tr>
+                <td><img src="~/Images/@animal.PictureName"></td>
+                <td>@animal.Name</td>
+                <td><a asp-controller="Admin" asp-action="EditAnimal" asp-route-animalid="@animal.AnimalId"><button class="button-40">Edit</button></a></td>
+                <td><a asp-controller="Admin" asp-action="DeleteAnimal" asp-route-animalid="@animal.AnimalId"><button class="button-40">Delete</button></a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>

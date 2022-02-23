@@ -1,0 +1,60 @@
+﻿@model MidProj.Models.Animal;
+@{
+    ViewBag.Title = "Admin";
+
+    Layout = "_Layout";
+}
+<script src="~/scripts/jquery.validate.min-1.17.0.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min-3.2.10.js"></script>
+<script src="~/scripts/jquery-3.3.1.js"></script>
+
+<div class="center">
+    <h1 class="headline center" style="min-width:400px;max-width:400px;">Adminstrator Page</h1>
+</div>
+<form asp-action="AddAnimal" asp-controller="Admin" method="post" enctype="multipart/form-data">
+    <table class="table-fill">
+
+        <tbody class="table-hover">
+
+            <tr>
+                <td class="text-left">AnimalName</td>
+                <td>
+                    <input asp-for="Name" type="text" /><span class="errormassage" asp-validation-for="Name"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-left">Age</td>
+                <td>
+                    <input asp-for="Age" type="number" /><span class="errormassage" asp-validation-for="Age"></span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="text-left">Picture</td>
+                <td>
+                    <label>Select image:</label>
+                    <input type="file" name="file" accept="Image/*">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-left">Category</td>
+                <td>
+                    <select asp-for="CatagoryId" asp-items="@ViewBag.catagories">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-left">Description</td>
+                <td>
+                    <textarea style="min-width: 300px;  display: block; min-height: 50px; box-sizing: border-box; " asp-for="Description" type="text"></textarea><span class="errormassage" asp-validation-for="Description"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="center">
+        <button style="min-width:400px;" class="button-40">Submit</button>
+    </div>
+
+    </tr>
+</form>
+

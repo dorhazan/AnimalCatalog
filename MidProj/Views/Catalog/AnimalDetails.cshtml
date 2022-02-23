@@ -1,0 +1,69 @@
+﻿@model MidProj.Models.Comment
+@{
+    ViewData["Title"] = "AnimalDetails";
+    Layout = "_Layout";
+}
+<script src="~/scripts/jquery.validate.min-1.17.0.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min-3.2.10.js"></script>
+<script src="~/scripts/jquery-3.3.1.js"></script>
+
+<div class="center">
+  
+                <h1 class="headline">@ViewBag.AnimalSelected.Name Details</h1>
+   
+    <table class="table-fill" style="min-width: 870px; max-width: 870px;">
+        <tr>
+            <th>Picture:</th>
+            <td><img src="~/Images/@ViewBag.AnimalSelected.PictureName"></td>
+        </tr>
+        <tr>
+            <th>Name:</th>
+            <td>@ViewBag.AnimalSelected.Name</td>
+        </tr>
+        <tr>
+            <th>Age:</th>
+            <td>@ViewBag.AnimalSelected.Age</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>@ViewBag.AnimalSelected.Description</td>
+
+
+        </tr>
+        <tr>
+            <th>Category Name</th>
+            <td>@ViewBag.AnimalSelected.Catagory.Name</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td style="width: 830px; max-width: 830px;"><h1 class="text-left" style="text-align:center;">Comments:</h1></td>
+
+        </tr>
+
+
+        @foreach (var comment in ViewBag.AnimalSelected.Comments)
+        {
+            <tr>
+                <td style="min-width: 830px; max-width: 830px; text-align: center; "> @comment.CommentText</td>
+            </tr>
+
+
+        }
+
+
+    </table>
+    <form asp-action="AddComment" asp-controller="Catalog" asp-route-id="@ViewBag.AnimalSelected.AnimalId" style="width:875px; max-width:875px; " class="text-center">
+        <textarea asp-for=CommentText class="text-center" style="box-sizing: border-box; display: block; min-width: 875px; max-width: 875px; min-height: 50px; " type="text" id="commentstring" placeholder="Add Comment ..."></textarea><span class="errormassage" asp-validation-for="CommentText"></span>
+
+        <p></p>
+        <button type="submit" class="text-center button-40">SubmitComment</button>
+    </form>
+</div>
+
+
+
+
+
+

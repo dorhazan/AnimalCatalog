@@ -1,0 +1,55 @@
+﻿@model MidProj.Models.LoginModel
+
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "_Layout";
+
+}
+
+<div class="center">
+    <form method="post" asp-action="Login">
+        <table class="table-fill">
+
+            <tr>
+                <td>
+                    <label>Username</label>
+                </td>
+                <td>
+                    <input asp-for="Username" />
+                    <p></p>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <label>Password</label>
+                </td>
+                <td>
+                    <input type="password" asp-for="Password" />
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @if (ViewBag.usercreated == null)
+                    {
+                        <label>Admin user :"administrator"</label>
+                        <p></p>
+                        <label>password : "123qwe!Q"</label>
+                    }
+                    else
+                    {
+
+                        <label class="errormassage">@ViewBag.usercreated</label>
+                        <label>@ViewBag.usercreatedmassage</label>
+                    }
+                </td>
+                <td>
+                    <input class="button-40" type="submit" value="Login" />
+                </td>
+            </tr>
+            <h3 class="headline">Dont have an account ? @Html.ActionLink("Click Here","Register")</h3>
+        </table>
+    </form>

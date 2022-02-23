@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+    <title>@ViewBag.Title</title>
+    <script src="~/js/JavaScript.js"></script>
+    <script src="~/scripts/jquery.validate.min-1.17.0.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min-3.2.10.js"></script>
+    <script src="~/scripts/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <div class="center">
+        <form>
+            <button class="button-30" role="button" asp-action="Home" asp-controller="Home">Home</button>
+            <button class="button-30" role="button" asp-action="Catalog" asp-controller="Catalog" asp-route-id="1">Catalog</button>
+            <button class="button-30" role="button" asp-action="Admin" asp-controller="Admin" asp-route-id="1">Admin</button>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <button class="button-30" role="button" asp-action="CreateRoles" asp-controller="Account">Login/Register</button>
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
+                <button class="button-30" role="button" asp-action="Logout" asp-controller="Account">Logout</button>
+
+            }
+            
+
+        </form>
+
+    </div>
+
+    @RenderBody()
+
+</body>
+</html>

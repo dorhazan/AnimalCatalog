@@ -1,0 +1,46 @@
+﻿@model MidProj.Models.LoginModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "_Layout";
+
+}
+<script src="~/scripts/jquery.validate.min-1.17.0.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min-3.2.10.js"></script>
+<script src="~/scripts/jquery-3.3.1.js"></script>
+
+<div class="center">
+    <form method="post" asp-action="Register">
+        <table class="table-fill">
+
+            <tr>
+                <td>
+                    <label>Username</label>
+                </td>
+                <td>
+                    <input asp-for="Username" />
+                    <p></p>
+                    <span class="errormassage" asp-validation-for="Username"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <label>Password</label>
+                </td>
+                <td>
+                    <input type="password" asp-for="Password" />
+                    <p></p>
+                    <span class="errormassage" asp-validation-for="Password"></span>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <input class="button-40 center" type="submit" value="Register" />
+                </td>
+            </tr>
+        </table>
+    </form>
